@@ -11,6 +11,7 @@ from routes.leaderboard import leaderboard_bp
 from routes.code import code_bp
 from routes.ai import ai_bp
 
+
 app = Flask(__name__)
 CORS(app)
 
@@ -28,6 +29,7 @@ app.register_blueprint(code_bp)
 app.register_blueprint(dashboard_bp)
 app.register_blueprint(leaderboard_bp)
 app.register_blueprint(ai_bp)
+
 
 @app.route("/")
 def home():
