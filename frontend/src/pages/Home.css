@@ -1,0 +1,189 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+* {
+  transition: all 0.3s ease;
+}
+.home {
+  height: 100vh;
+  color: white;
+  overflow: hidden;
+  position: relative;
+
+  /* 🔥 FINAL BACKGROUND IMAGE */
+  background: url("../back.png") no-repeat center center;
+  background-size: 100%;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 60px;
+  align-items: center;
+}
+
+/* IMPORTANT */
+.navbar,
+.hero {
+  position: relative;
+  z-index: 1;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+.logo h2 {
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.logo img {
+  width: 105px;
+}
+
+.nav-buttons button {
+  margin-left: 10px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.login {
+  background: transparent;
+  border: 1px solid #7c3aed;
+  color: white;
+}
+
+.signup {
+  border: none;
+  background: linear-gradient(135deg, #7c3aed, #22d3ee);
+  color: white;
+}
+
+/* HERO 
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px;
+}
+.hero {
+  display: flex;
+  justify-content: center;   
+  align-items: center;       
+  height: 80vh;              
+  text-align: center;
+}*/
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 60px;
+}
+/* LEFT */
+.left {
+  max-width: 550px;
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;   /* 👈 LEFT ALIGN */
+  text-align: left;
+}
+.badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid #7c3aed;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.left h1 {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.left h1 span {
+  background: linear-gradient(90deg, #a78bfa, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.logo h2 {
+  letter-spacing: 0.5px;
+}
+.real {
+  background: linear-gradient(90deg, #22d3ee, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rocket {
+  margin-left: 10px;
+  font-size: 34px;
+  
+  /* 🔥 FIX color issue */
+  background: none !important;
+  -webkit-text-fill-color: initial !important;
+  color: white;   /* or default emoji color */
+}
+.left p {
+  margin-top: 25px;
+  font-size: 16px;      
+  line-height: 1.8;     
+  color:  #cbd5f5;
+  max-width: 480px;
+  opacity: 0.95;
+  letter-spacing: 0.3px;
+}
+.left p span {
+  color: #a78bfa;
+  font-weight: 500;
+}
+/* BUTTON */
+.cta {
+  margin-top: 30px;
+  margin-left: 90px;
+  padding: 12px 48px;
+  border-radius: 20px;
+  border: none;
+  background: linear-gradient(135deg, #9333ea, #06b6d4);
+   box-shadow: 0 5px 15px rgba(147, 51, 234, 0.3);
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cta:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #9333ea;
+}
+.cta:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.6);
+}
+/* RIGHT */
+
+
+
+
+/* 🔥 CodeWave text styling */
+.logo h2 {
+  font-size: 42px;
+  font-weight: 800;
+  color: white;
+}
+
+/* 🔥 Gradient for "Wave" part */
+.wave-text {
+  background: linear-gradient(90deg, #a78bfa, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
