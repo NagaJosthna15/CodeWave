@@ -7,25 +7,87 @@ from dotenv import load_dotenv
 import os
 
 
-load_dotenv()
+# LOAD ENV
+load_dotenv(dotenv_path=".env")
 
 
+# DEBUG
+print(os.getenv("GROQ_API_KEY"))
+
+
+# GROQ CLIENT
 client = Groq(
-    api_key=os.getenv("GROQ_API_KEY")
+
+    api_key=os.getenv(
+        "GROQ_API_KEY"
+    )
 )
 
 
-ai_bp = Blueprint("ai", __name__)
-
-
+# MODEL
 MODEL_NAME = "llama-3.3-70b-versatile"
 
 
+ai_bp = Blueprint(
+
+    "ai",
+
+    __name__
+)
+
+
 # CHATBOT
-@ai_bp.route("/chatbot", methods=["POST"])
+@ai_bp.route(
+
+    "/chatbot",
+
+    methods=["POST"]
+)
 def chatbot():
 
-    question = request.json["question"]
+    data = request.get_json()
+
+    code = str(
+
+        data.get("code", "")
+    )
+
+    question = str(
+
+        data.get("question", "")
+    )
+
+    optimized_code = str(
+
+        data.get(
+            "optimized_code",
+            ""
+        )
+    )
+
+    prompt = f"""
+You are an expert coding mentor.
+
+Student Original Code:
+{code}
+
+Optimized Code:
+{optimized_code}
+
+Student Question:
+{question}
+
+Explain clearly step-by-step.
+
+Also explain:
+1. Output
+2. Time complexity
+3. Space complexity
+4. Better approach
+5. Optimization tips
+
+Keep response beginner friendly.
+"""
 
     try:
 
@@ -34,9 +96,11 @@ def chatbot():
             model=MODEL_NAME,
 
             messages=[
+
                 {
                     "role": "user",
-                    "content": question
+
+                    "content": prompt
                 }
             ]
         )
@@ -44,32 +108,59 @@ def chatbot():
         answer = response.choices[0].message.content
 
         return jsonify({
+
             "answer": answer
         })
 
     except Exception as e:
 
         return jsonify({
-            "answer": str(e)
+
+            "error": str(e)
         })
 
 
-# OPTIMIZE
-@ai_bp.route("/optimize", methods=["POST"])
-def optimize():
+# AI SUGGESTION
+@ai_bp.route(
 
-    code = request.json["code"]
+    "/ai-suggestion",
+
+    methods=["POST"]
+)
+def ai_suggestion():
+
+    data = request.get_json()
+
+    code = str(
+
+        data.get("code", "")
+    )
+
+    complexity = str(
+
+        data.get(
+            "complexity",
+            ""
+        )
+    )
 
     prompt = f"""
-    Optimize this code.
+You are an expert coding mentor.
 
-    Reduce time complexity.
+Analyze this code:
 
-    Explain improvements.
+{code}
 
-    Code:
-    {code}
-    """
+Complexity:
+{complexity}
+
+Give:
+1. Optimization suggestion
+2. Better approach
+3. Performance improvement
+
+Keep response short and beginner friendly.
+"""
 
     try:
 
@@ -78,44 +169,58 @@ def optimize():
             model=MODEL_NAME,
 
             messages=[
+
                 {
                     "role": "user",
+
                     "content": prompt
                 }
             ]
         )
 
-        result = response.choices[0].message.content
+        suggestion = response.choices[0].message.content
 
         return jsonify({
-            "optimized_code": result
+
+            "suggestion": suggestion
         })
 
     except Exception as e:
 
         return jsonify({
-            "optimized_code": str(e)
+
+            "error": str(e)
         })
 
 
-# EXPLAIN
-@ai_bp.route("/explain", methods=["POST"])
+# EXPLAIN CODE
+@ai_bp.route(
+
+    "/explain",
+
+    methods=["POST"]
+)
 def explain():
 
-    code = request.json["code"]
+    data = request.get_json()
+
+    code = str(
+
+        data.get("code", "")
+    )
 
     prompt = f"""
-    Explain this code step-by-step.
+Explain this code step-by-step.
 
-    Also explain:
-    1. Time Complexity
-    2. Space Complexity
-    3. Dry Run
-    4. Optimization ideas
+Also explain:
+1. Time Complexity
+2. Space Complexity
+3. Dry Run
+4. Optimization ideas
 
-    Code:
-    {code}
-    """
+Code:
+{code}
+"""
 
     try:
 
@@ -124,21 +229,83 @@ def explain():
             model=MODEL_NAME,
 
             messages=[
+
                 {
                     "role": "user",
+
                     "content": prompt
                 }
             ]
         )
 
-        result = response.choices[0].message.content
+        explanation = response.choices[0].message.content
 
         return jsonify({
-            "explanation": result
+
+            "explanation": explanation
         })
 
     except Exception as e:
 
         return jsonify({
-            "explanation": str(e)
+
+            "error": str(e)
+        })
+
+
+# OPTIMIZE CODE
+@ai_bp.route(
+
+    "/optimize",
+
+    methods=["POST"]
+)
+def optimize():
+
+    data = request.get_json()
+
+    code = str(
+
+        data.get("code", "")
+    )
+
+    prompt = f"""
+Optimize this code.
+
+Reduce time complexity.
+
+Explain improvements.
+
+Code:
+{code}
+"""
+
+    try:
+
+        response = client.chat.completions.create(
+
+            model=MODEL_NAME,
+
+            messages=[
+
+                {
+                    "role": "user",
+
+                    "content": prompt
+                }
+            ]
+        )
+
+        optimized = response.choices[0].message.content
+
+        return jsonify({
+
+            "optimized_code": optimized
+        })
+
+    except Exception as e:
+
+        return jsonify({
+
+            "error": str(e)
         })
