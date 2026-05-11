@@ -1,0 +1,749 @@
+/* ================= PAGE ================= */
+
+.dashPage {
+
+  height: 100vh;
+
+  overflow: hidden;
+
+  padding: 14px 18px;
+
+  background:
+    radial-gradient(circle at top,
+      rgba(124,58,237,0.15),
+      transparent 30%),
+
+    radial-gradient(circle at bottom right,
+      rgba(59,130,246,0.12),
+      transparent 30%),
+
+    #020617;
+
+  color: white;
+
+  font-family: Arial, sans-serif;
+
+  box-sizing: border-box;
+}
+
+/* ================= NAVBAR ================= */
+
+.dashNav {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 14px;
+}
+
+.dashLogo {
+
+  font-size: 22px;
+
+  font-weight: 700;
+
+  margin: 0;
+}
+
+.dashLogo span {
+
+  color: #38bdf8;
+}
+
+/* ================= NAV LINKS ================= */
+
+.dashLinks {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.dashLinks button {
+
+  background: transparent;
+
+  border: none;
+
+  color: white;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  padding: 10px 18px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+
+.dashLinks .active {
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #4f46e5
+    );
+
+  box-shadow:
+    0 0 18px rgba(124,58,237,0.75);
+}
+
+/* ================= PROFILE ================= */
+
+.profileWrapper {
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+}
+
+.dashProfile {
+
+  background: transparent;
+
+  border: none;
+
+  color: white;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+/* ================= PROFILE MENU ================= */
+
+.profileMenu {
+
+  position: absolute;
+
+  top: 42px;
+
+  right: 0;
+
+  width: 230px;
+
+  background: #1e1f29;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  border-radius: 10px;
+
+  padding: 12px 0;
+
+  z-index: 9999;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.45);
+
+  animation: fadeMenu 0.2s ease;
+}
+
+.menuUser {
+
+  padding: 0 18px 14px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  color: #d1d5db;
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.06);
+}
+
+.profileMenu p {
+
+  margin: 0;
+
+  padding: 14px 18px;
+
+  font-size: 14px;
+
+  color: #d1d5db;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.profileMenu p:hover {
+
+  background: #2b2d36;
+
+  color: white;
+}
+
+.profileMenu hr {
+
+  border: none;
+
+  border-top:
+    1px solid rgba(255,255,255,0.06);
+
+  margin: 10px 16px;
+}
+
+.profileMenu button {
+
+  display: block;
+
+  margin: 12px auto 4px;
+
+  width: 140px;
+
+  padding: 12px;
+
+  border: none;
+
+  border-radius: 4px;
+
+  background: #e5e7eb;
+
+  color: #111827;
+
+  font-size: 14px;
+
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.profileMenu button:hover {
+
+  background: white;
+
+  transform: scale(1.03);
+}
+
+@keyframes fadeMenu {
+
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= HERO ================= */
+
+.dashHero {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 14px;
+}
+
+.dashHero h1 {
+
+  font-size: 28px;
+
+  margin: 0;
+}
+
+.dashHero p {
+
+  font-size: 13px;
+
+  color: #cbd5e1;
+
+  margin-top: 4px;
+}
+
+/* ================= STREAK ================= */
+
+.streakCard {
+
+  width: 72px;
+
+  padding: 10px;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(124,58,237,0.25),
+      rgba(59,130,246,0.12)
+    );
+
+  border: 1px solid #7c3aed;
+
+  box-shadow:
+    0 0 18px rgba(124,58,237,0.35);
+}
+
+.streakCard h2 {
+
+  font-size: 18px;
+
+  margin: 0;
+}
+
+.streakCard p {
+
+  margin-top: 4px;
+
+  font-size: 10px;
+}
+
+/* ================= STATS ================= */
+
+.statsGrid {
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 10px;
+
+  margin-bottom: 10px;
+}
+
+.statCard {
+
+  background: rgba(10,18,40,0.92);
+
+  border-radius: 14px;
+
+  padding: 12px;
+
+  min-height: 95px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.statIcon {
+
+  width: 28px;
+
+  height: 28px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  font-size: 13px;
+
+  margin-bottom: 8px;
+}
+
+.statCard p {
+
+  font-size: 11px;
+
+  color: #cbd5e1;
+}
+
+.statCard h2 {
+
+  font-size: 20px;
+
+  margin: 4px 0;
+}
+
+.statCard h2 span {
+
+  font-size: 11px;
+
+  color: #cbd5e1;
+}
+
+.statCard small {
+
+  font-size: 10px;
+
+  color: #cbd5e1;
+}
+
+/* COLORS */
+
+.purple {
+
+  border: 1px solid #7c3aed;
+}
+
+.green {
+
+  border: 1px solid #22c55e;
+}
+
+.yellow {
+
+  border: 1px solid #f59e0b;
+}
+
+.red {
+
+  border: 1px solid #ef4444;
+}
+
+.purple .statIcon {
+
+  background: #4c1d95;
+}
+
+.green .statIcon {
+
+  background: #14532d;
+}
+
+.yellow .statIcon {
+
+  background: #713f12;
+}
+
+.red .statIcon {
+
+  background: #7f1d1d;
+}
+
+/* ================= GRID ================= */
+
+.middleGrid {
+
+  display: grid;
+
+  grid-template-columns: 1.3fr 1fr 1fr;
+
+  gap: 10px;
+
+  margin-bottom: 10px;
+}
+
+.bottomGrid {
+
+  display: grid;
+
+  grid-template-columns: 1.4fr 1fr;
+
+  gap: 10px;
+}
+
+/* ================= PANELS ================= */
+
+.panel {
+
+  background: rgba(10,18,40,0.92);
+
+  border-radius: 14px;
+
+  padding: 14px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.panel h3 {
+
+  font-size: 16px;
+
+  margin-bottom: 10px;
+}
+
+/* ================= PROGRESS ================= */
+
+.progressRow {
+
+  display: grid;
+
+  grid-template-columns: 70px 1fr 45px;
+
+  gap: 10px;
+
+  align-items: center;
+
+  margin: 12px 0;
+}
+
+.progressRow span {
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+.bar {
+
+  height: 6px;
+
+  background: #1e293b;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+}
+
+.fill {
+
+  height: 100%;
+
+  border-radius: 20px;
+}
+
+.easyFill {
+
+  width: 60%;
+
+  background: #22c55e;
+}
+
+.mediumFill {
+
+  width: 40%;
+
+  background: #facc15;
+}
+
+.hardFill {
+
+  width: 20%;
+
+  background: #ef4444;
+}
+
+/* ================= CALENDAR ================= */
+
+.days {
+
+  display: grid;
+
+  grid-template-columns: repeat(7, 1fr);
+
+  text-align: center;
+
+  color: #cbd5e1;
+
+  margin-bottom: 8px;
+
+  font-size: 10px;
+}
+
+.dotGrid {
+
+  display: grid;
+
+  grid-template-columns: repeat(7, 1fr);
+
+  gap: 6px;
+}
+
+.dotGrid span {
+
+  width: 8px;
+
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #312e81;
+
+  justify-self: center;
+}
+
+.hotDot {
+
+  background: #8b5cf6 !important;
+
+  box-shadow:
+    0 0 10px #8b5cf6;
+}
+
+/* ================= ACTIVITY ================= */
+
+.activity {
+
+  display: grid;
+
+  grid-template-columns: 1fr 65px 75px;
+
+  align-items: center;
+
+  margin: 10px 0;
+
+  font-size: 10px;
+}
+
+.activity b {
+
+  padding: 4px 6px;
+
+  border-radius: 20px;
+
+  text-align: center;
+
+  font-size: 9px;
+}
+
+.activity .easy {
+
+  color: #22c55e;
+
+  background: #052e16;
+}
+
+.activity .medium {
+
+  color: #facc15;
+
+  background: #422006;
+}
+
+.activity .hard {
+
+  color: #ef4444;
+
+  background: #450a0a;
+}
+
+.activity em {
+
+  color: #22c55e;
+
+  font-style: normal;
+
+  font-size: 10px;
+}
+
+/* ================= CONTINUE ================= */
+
+.continuePanel {
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 10px;
+}
+
+.continuePanel h3 {
+
+  grid-column: 1 / -1;
+}
+
+.solveCard {
+
+  background: #111827;
+
+  border-radius: 10px;
+
+  padding: 10px;
+
+  border: 1px solid #1e293b;
+}
+
+.solveCard h4 {
+
+  margin: 0;
+
+  font-size: 10px;
+}
+
+.solveCard p {
+
+  font-size: 9px;
+
+  color: #facc15;
+}
+
+.solveCard span {
+
+  font-size: 9px;
+
+  color: #cbd5e1;
+}
+
+.smallBar {
+
+  height: 6px;
+
+  background: #1e293b;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  margin-top: 6px;
+}
+
+.smallBar div {
+
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      #a855f7,
+      #38bdf8
+    );
+}
+
+/* ================= BADGES ================= */
+
+.badges {
+
+  display: flex;
+
+  justify-content: space-around;
+
+  align-items: center;
+
+  text-align: center;
+}
+
+.badges div {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.badges span {
+
+  font-size: 28px;
+}
+
+.badges b {
+
+  font-size: 14px;
+}
+
+.badges p {
+
+  font-size: 10px;
+
+  color: #cbd5e1;
+}
